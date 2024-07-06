@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pull Up Horizon</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <h1>Pull Up Horizon</h1>
+            <p>Your gateway to exciting events</p>
+            <div id="countdown"></div>
+            <a href="#events" class="btn">View Events</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="https://www.google.com" target="_blank">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>Welcome to Pull Up Horizon</h2>
+            <img src="images/capy.jpg" alt="Hero Image">
+            <p>Discover the best events happening around you.</p>
+        </section>
+        <section id="about">
+            <h2>About Us</h2>
+            <img src="images/saltysam.jpg" alt="About Us Image">
+            <p>Pull Up Horizon curates the most exciting events in the city, from music festivals to art exhibitions.</p>
+        </section>
+        <section id="events">
+            <h2>Events</h2>
+            <img src="images/college.jpg" alt="Events Image">
+            <p>Check out our upcoming events and join us for an unforgettable experience.</p>
+            <!-- Embed Luma event sign-up here -->
+            <iframe
+                src="https://lu.ma/embed/calendar/cal-U1dbbJUK025OXl7/events?"
+                width="600"
+                height="450"
+                frameborder="0"
+                style="border: 1px solid #bfcbda88; border-radius: 4px;"
+                allowfullscreen=""
+                aria-hidden="false"
+                tabindex="0"
+            ></iframe>
+        </section>
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <img src="images/contact.jpg" alt="Contact Us Image">
+            <p>You can reach us at:</p>
+            <ul>
+                <li>Email: contact@pulluphorizon.com</li>
+                <li>Phone: (123) 456-7890</li>
+                <li>Address: up your ass to the left</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Pull Up Horizon. All rights reserved.</p>
+    </footer>
+    <script>
+        function countdownTimer(endDate) {
+            let timer, days, hours, minutes, seconds;
+
+            endDate = new Date(endDate).getTime();
+
+            if (isNaN(endDate)) {
+                return;
+            }
+
+            timer = setInterval(function () {
+                let now = new Date().getTime();
+                let timeRemaining = parseInt((endDate - now) / 1000);
+
+                if (timeRemaining >= 0) {
+                    days = parseInt(timeRemaining / 86400);
+                    timeRemaining = (timeRemaining % 86400);
+
+                    hours = parseInt(timeRemaining / 3600);
+                    timeRemaining = (timeRemaining % 3600);
+
+                    minutes = parseInt(timeRemaining / 60);
+                    timeRemaining = (timeRemaining % 60);
+
+                    seconds = parseInt(timeRemaining);
+
+                    document.getElementById("countdown").innerHTML =
+                        (days > 0 ? days + "d " : "") +
+                        (hours < 10 ? "0" + hours : hours) + "h " +
+                        (minutes < 10 ? "0" + minutes : minutes) + "m " +
+                        (seconds < 10 ? "0" + seconds : seconds) + "s ";
+                } else {
+                    document.getElementById("countdown").innerHTML = "The countdown is over!";
+                    clearInterval(timer);
+                }
+            }, 1000);
+        }
+
+        (function () {
+            countdownTimer("2024-07-08T00:00:00");
+        })();
+    </script>
+</body>
+</html>
